@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quincy Promes - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            color: #333;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 40px 30px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item::before {
+            content: '•';
+            color: #ffffff80;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #764ba2;
+        }
+
+        .summary {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 25px;
+            position: relative;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .timeline-company {
+            font-size: 0.95rem;
+            color: #718096;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .skill-name {
+            color: #4a5568;
+        }
+
+        .skill-level {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .project-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .project-link {
+            font-size: 0.8rem;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        @media print {
+            body { 
+                background: white; 
+                padding: 0; 
+            }
+            .download-btn { display: none; }
+            .resume-container { 
+                box-shadow: none; 
+                border-radius: 0;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="window.print()">📄 Download Resume</button>
+    
+    <div class="resume-container">
+        <div class="header">
+            <div class="header-content">
+                <h1 class="name">Idudu Promise</h1>
+                <p class="job-title">Full Stack Web Developer</p>
+                <div class="contact-grid">
+                    <div class="contact-item">07070537650</div>
+                    <div class="contact-item">Idudupromise2@gmail.com</div>
+                    <div class="contact-item">LinkedIn: idudu-promise-7b514a29a</div>
+                    <div class="contact-item">Twitter: @Promes_code</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <div class="summary">
+                    I am a passionate young web developer with a solid foundation in both frontend and backend development. At just 17, I've already completed intensive full-stack training at New Horizons Nigeria and am currently gaining practical experience through the prestigious HNG internship program while pursuing Information Technology at Redeemers University. I bring fresh perspectives, quick learning abilities, and unwavering enthusiasm to every project, with a particular interest in creating efficient, user-friendly web applications that solve real-world problems.
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-title">HNG Intern</div>
+                    <div class="timeline-company">HNG Tech Program (Remote)</div>
+                    <div class="timeline-description">
+                        Currently participating in the HNG internship program, working on practical projects and gaining hands-on experience in software development. Collaborating with other developers and applying both frontend and backend skills.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-title">Independent Developer</div>
+                    <div class="timeline-company">Personal Portfolio</div>
+                    <div class="timeline-description">
+                        Building personal projects to reinforce learning and develop practical skills. Applying knowledge from New Horizons training to create web applications and explore new technologies.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-title">Information Technology</div>
+                    <div class="timeline-company">Redeemers University, Ede, Nigeria</div>
+                    <div class="timeline-description">
+                        Currently pursuing a degree in Information Technology, focusing on building a strong foundation in programming, algorithms, and software development principles.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-title">Full Stack Web Development</div>
+                    <div class="timeline-company">New Horizons Nigeria</div>
+                    <div class="timeline-description">
+                        Completed comprehensive training in full stack web development, covering both frontend and backend technologies. Gained practical experience through hands-on projects and industry-standard practices.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2023</div>
+                    <div class="timeline-title">Secondary School Education</div>
+                    <div class="timeline-company">Tindip College, Nigeria</div>
+                    <div class="timeline-description">
+                        Completed secondary school education with strong academic performance. Developed foundational skills and discovered passion for technology and programming.
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend Technologies</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">HTML</span>
+                            <span class="skill-level">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CSS</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-level">60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Vue.js</span>
+                            <span class="skill-level">70%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend Technologies</h4>
+                        <div class="skill-item">
+                            <span class="skill-name">PHP</span>
+                            <span class="skill-level">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 80%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Laravel</span>
+                            <span class="skill-level">20%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 20%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">API Development</span>
+                            <span class="skill-level">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%"></div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">MySQL</span>
+                            <span class="skill-level">97%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 97%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Portfolio Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">Knitting Website</div>
+                        <a href="https://techpromes.github.io/neola.x.crochet/" class="project-link">techpromes.github.io/neola.x.crochet/</a>
+                        <div class="project-description">
+                            Developed a comprehensive website for knitting services with responsive design and user-friendly interface.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Vege Website</div>
+                        <a href="https://vege.bal-amin.com.ng/index.html" class="project-link">vege.bal-amin.com.ng</a>
+                        <div class="project-description">
+                            Created a vegetable-focused website with modern design, focusing on clean UI/UX and functionality.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">FootFlex Shoes</div>
+                        <a href="https://techpromes.github.io/footflex.io/" class="project-link">techpromes.github.io/footflex.io/</a>
+                        <div class="project-description">
+                            Built an e-commerce style website for shoes, implementing modern web design principles.
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Photofolio</div>
+                        <a href="https://techpromes.github.io/cT/index.html" class="project-link">techpromes.github.io/cT/</a>
+                        <div class="project-description">
+                            Developed a photography portfolio website showcasing advanced CSS and JavaScript skills.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
